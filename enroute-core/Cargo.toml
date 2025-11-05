@@ -1,0 +1,34 @@
+[package]
+name = "enroute-core"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+
+[dependencies]
+enroute-macros = { path = "../enroute-macros", version = "0.0.0" }
+
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+mea = { workspace = true }
+futures = { workspace = true }
+futures-timeout = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+cloudevents-sdk = { workspace = true }
+tokio = { version = "1.47.1", optional = true, features = ["rt", "macros"] }
+tokio-util = { version = "0.7.16", optional = true }
+async-broadcast = { version = "0.7.2" }
+url = "2.5.7"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
+
+[features]
+default = ["dep:tokio"]
+tokio = ["dep:tokio", "dep:tokio-util"]

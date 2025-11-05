@@ -1,0 +1,26 @@
+[package]
+name = "enroute-kafka"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+
+[dependencies]
+enroute-core = { path = "../enroute-core", version = "0.0.0", default-features = false, optional = false }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+async-trait = { workspace = true }
+futures = { workspace = true }
+anyhow = { workspace = true }
+rdkafka = { version = "0.38", features = ["cmake-build"] }
+async-stream = "0.3.6"
+
+[features]
+default = ["tokio"]
+
+tokio = ["enroute-core/tokio"]

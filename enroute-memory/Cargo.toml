@@ -1,0 +1,19 @@
+[package]
+name = "enroute-memory"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+
+[dependencies]
+enroute-core = { path = "../enroute-core", version = "0.0.0", default-features = false, optional = false }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+futures = { workspace = true }
+anyhow = { workspace = true }
+mea = { workspace = true }

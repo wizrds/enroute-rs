@@ -1,0 +1,30 @@
+[workspace.package]
+version = "0.0.0"
+edition = "2024"
+description = "Message broker abstraction library for Rust"
+repository = "https://github.com/wizrds/enroute-rs"
+license = "ISC"
+readme = "README.md"
+
+[workspace]
+resolver = "2"
+members = [
+    "enroute-macros",
+    "enroute-core",
+    "enroute-memory",
+    "enroute-kafka",
+    "enroute",
+]
+
+[workspace.dependencies]
+async-trait = { version = "0.1.89" }
+futures = { version = "0.3.31" }
+futures-timeout = { version = "0.1.3" }
+thiserror = { version = "2.0.17" }
+anyhow = { version = "1.0.100" }
+mea = { version = "0.4.2" }
+cloudevents-sdk = { version = "0.8.0" }
+chrono = { version = "0.4.38", features = ["serde"] }
+uuid = { version = "1.17.0", features = ["serde", "v4"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = { version = "1.0.142" }
