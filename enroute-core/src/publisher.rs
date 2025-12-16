@@ -9,9 +9,53 @@ use crate::{error::Result, event::Event};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PublisherOptions {
     /// The channel to publish messages to.
-    pub channel: &'static str,
+    pub channel: String,
 }
 
+impl PublisherOptions {
+    /// Create a new [`PublisherOptionsBuilder`] with default values.
+    pub fn builder() -> PublisherOptionsBuilder {
+        PublisherOptionsBuilder::new()
+    }
+}
+
+/// A builder for creating [`PublisherOptions`].
+#[derive(Default, Debug, Clone)]
+pub struct PublisherOptionsBuilder {
+    channel: Option<String>,
+}
+
+impl PublisherOptionsBuilder {
+    /// Create a new [`PublisherOptionsBuilder`] with default values.
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Set the channel to publish messages to.
+    /// 
+    /// # Arguments
+    /// * `channel` - The channel to publish messages to.
+    /// 
+    /// # Returns
+    /// The builder with the channel set.
+    pub fn channel(mut self, channel: impl Into<String>) -> Self {
+        self.channel = Some(channel.into());
+        self
+    }
+
+    /// Build the [`PublisherOptions`] from the builder.
+    /// 
+    /// # Returns
+    /// The built [`PublisherOptions`].
+    /// 
+    /// # Panics
+    /// If the channel is not set.
+    pub fn build(self) -> PublisherOptions {
+        PublisherOptions {
+            channel: self.channel.expect("channel is required"),
+        }
+    }
+}
 
 /// A message publisher that can publish events.
 #[async_trait]

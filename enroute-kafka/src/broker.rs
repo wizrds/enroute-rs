@@ -96,7 +96,7 @@ impl Broker for KafkaBroker {
 
     async fn consumer(&self, options: ConsumerOptions) -> Result<Self::Consumer> {
         Ok(KafkaConsumer::new(
-            self.new_consumer(options.channel, options.consumer_tag)?
+            self.new_consumer(&options.channel, &options.consumer_tag)?
         ))
     }
 }

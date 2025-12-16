@@ -10,9 +10,69 @@ use crate::{error::Result, envelope::Envelope};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ConsumerOptions {
     /// The channel to consume messages from.
-    pub channel: &'static str,
+    pub channel: String,
     /// The consumer tag to identify the consumer.
-    pub consumer_tag: &'static str,
+    pub consumer_tag: String,
+}
+
+impl ConsumerOptions {
+    /// Create a new [`ConsumerOptionsBuilder`] with default values.
+    pub fn builder() -> ConsumerOptionsBuilder {
+        ConsumerOptionsBuilder::default()
+    }
+}
+
+/// A builder for creating [`ConsumerOptions`].
+#[derive(Default, Debug, Clone)]
+pub struct ConsumerOptionsBuilder {
+    channel: Option<String>,
+    consumer_tag: Option<String>,
+}
+
+impl ConsumerOptionsBuilder {
+    /// Create a new [`ConsumerOptionsBuilder`] with default values.
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Set the channel to consume messages from.
+    /// 
+    /// # Arguments
+    /// * `channel` - The name of the channel to consume messages from.
+    /// 
+    /// # Returns
+    /// The builder with the channel set.
+    pub fn channel(mut self, channel: impl Into<String>) -> Self {
+        self.channel = Some(channel.into());
+        self
+    }
+
+    /// Set the consumer tag to identify the group this consumer
+    /// is part of.
+    /// 
+    /// # Arguments
+    /// * `consumer_tag` - The consumer tag to identify the consumer's group.
+    /// 
+    /// # Returns
+    /// The builder with the consumer tag set.
+    pub fn consumer_tag(mut self, consumer_tag: impl Into<String>) -> Self {
+        self.consumer_tag = Some(consumer_tag.into());
+        self
+    }
+
+    /// Build the [`ConsumerOptions`] from the builder.
+    /// 
+    /// # Returns
+    /// The build [`ConsumerOptions`].
+    /// 
+    /// # Panics
+    /// If the channel or consumer tag is not set.
+    pub fn build(self) -> ConsumerOptions {
+        ConsumerOptions {
+            channel: self.channel.expect("channel is required"),
+            consumer_tag: self.consumer_tag.expect("consumer_tag is required"),
+        }
+    }
 }
 
 
