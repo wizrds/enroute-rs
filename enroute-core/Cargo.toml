@@ -8,7 +8,7 @@ license.workspace = true
 readme.workspace = true
 
 [dependencies]
-enroute-macros = { path = "../enroute-macros", version = "0.1.0" }
+enroute-macros = { path = "../enroute-macros", version = "0.1.1" }
 
 async-trait = { workspace = true }
 thiserror = { workspace = true }
