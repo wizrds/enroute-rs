@@ -44,17 +44,21 @@ async fn main() {
         .expect("Failed to create broker");
 
     let user_created_publisher = broker
-        .publisher(PublisherOptions {
-            channel: UserCreated::channel_name(),
-        })
+        .publisher(
+            PublisherOptions::builder()
+                .channel(UserCreated::channel_name())
+                .build(),
+        )
         .await
         .expect("Failed to create publisher");
 
     let user_created_consumer = broker
-        .consumer(ConsumerOptions {
-            channel: UserCreated::channel_name(),
-            consumer_tag: "user_created_consumer",
-        })
+        .consumer(
+            ConsumerOptions::builder()
+                .channel(UserCreated::channel_name())
+                .consumer_tag("user_created_consumer")
+                .build(),
+        )
         .await
         .expect("Failed to create consumer");
 
@@ -124,17 +128,21 @@ async fn main() {
         .expect("Failed to create Kafka broker");
 
     let order_placed_publisher = broker
-        .publisher(PublisherOptions {
-            channel: OrderPlaced::channel_name(),
-        })
+        .publisher(
+            PublisherOptions::builder()
+                .channel(OrderPlaced::channel_name())
+                .build(),
+        )
         .await
         .expect("Failed to create publisher");
 
     let order_placed_consumer = broker
-        .consumer(ConsumerOptions {
-            channel: OrderPlaced::channel_name(),
-            consumer_tag: "order_placed_consumer",
-        })
+        .consumer(
+            ConsumerOptions::builder()
+                .channel(OrderPlaced::channel_name())
+                .consumer_tag("order_placed_consumer")
+                .build(),
+        )
         .await
         .expect("Failed to create consumer");
 
