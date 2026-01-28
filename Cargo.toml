@@ -20,11 +20,11 @@ members = [
 async-trait = { version = "0.1.89" }
 futures = { version = "0.3.31" }
 futures-timeout = { version = "0.1.3" }
-thiserror = { version = "2.0.17" }
+thiserror = { version = "2.0" }
 anyhow = { version = "1.0.100" }
-mea = { version = "0.4.2" }
-cloudevents-sdk = { version = "0.8.0" }
-chrono = { version = "0.4.38", features = ["serde"] }
+mea = { version = "0.6" }
+cloudevents-sdk = { version = "0.9" }
+chrono = { version = "0.4", features = ["serde"] }
 uuid = { version = "1.17.0", features = ["serde", "v4"] }
 serde = { version = "1.0.219", features = ["derive"] }
-serde_json = { version = "1.0.142" }
+serde_json = { version = "1.0" }
