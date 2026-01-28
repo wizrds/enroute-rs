@@ -8,10 +8,10 @@ license.workspace = true
 readme.workspace = true
 
 [dependencies]
-enroute-macros = { path = "../enroute-macros", version = "0.1.1" }
-enroute-core = { path = "../enroute-core", version = "0.1.1" }
-enroute-memory = { path = "../enroute-memory", version = "0.1.1" }
-enroute-kafka = { path = "../enroute-kafka", version = "0.1.1", optional = true }
+enroute-macros = { path = "../enroute-macros", version = "0.1.2" }
+enroute-core = { path = "../enroute-core", version = "0.1.2" }
+enroute-memory = { path = "../enroute-memory", version = "0.1.2" }
+enroute-kafka = { path = "../enroute-kafka", version = "0.1.2", optional = true }
 
 [features]
 kafka = ["dep:enroute-kafka"]
